@@ -5,6 +5,7 @@ import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Menu, X, Camera, C
 import './styles.css';
 import './glass.css';
 import './premium.css';
+import './responsive.css';
 
 const WA='https://wa.me/918129120437';
 const fishPhotos={guppy:'https://images.unsplash.com/photo-1542383395438-1054e1248f2a?auto=format&fit=crop&w=1200&q=85',platy:'https://images.unsplash.com/photo-1782811559428-71eb55f0dd83?auto=format&fit=crop&w=1400&q=85',water:'https://images.unsplash.com/photo-1782811559428-71eb55f0dd83?auto=format&fit=crop&w=1800&q=90',tank:'https://images.unsplash.com/photo-1768396747928-01814cb908fd?auto=format&fit=crop&w=1000&q=85',school:'https://images.unsplash.com/photo-1711826949944-78aa8b7be563?auto=format&fit=crop&w=1000&q=85',close:'https://images.unsplash.com/photo-1768396747928-01814cb908fd?auto=format&fit=crop&w=900&q=85'};

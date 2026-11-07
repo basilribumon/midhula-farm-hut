@@ -1,0 +1,73 @@
+/* Small-screen fit and interaction polish */
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 82px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .button, .nav-whatsapp, .text-link, .fish-card, .fish-card img,
+  .gallery-grid > div, .gallery-grid img, .social-mosaic a,
+  .social-mosaic img, .footer-col a {
+    transition-timing-function: cubic-bezier(.2,.75,.25,1);
+    transition-duration: .36s;
+  }
+  .fish-card:hover { transform: translateY(-7px) rotateX(1deg); }
+  .gallery-grid > div:hover img { transform: scale(1.045); }
+  .social-mosaic a:hover img { transform: scale(1.05); }
+  .nav-whatsapp:hover svg { transform: translateX(3px); }
+}
+
+@media (max-width: 430px) {
+  html { scroll-padding-top: 68px; }
+  section[id] { scroll-margin-top: 68px; }
+  .section-pad { padding-left: 6%; padding-right: 6%; }
+  .hero { min-height: 690px; }
+  .hero-copy {
+    width: 88%;
+    margin-left: 6%;
+    margin-bottom: 112px;
+    padding: 16px 13px 17px;
+  }
+  .hero-copy::before { border-radius: 17px; }
+  .hero h1 {
+    font-size: clamp(39px, 10.3vw, 44px);
+    line-height: 1.04;
+    margin: 20px 0 12px;
+  }
+  .hero-copy > p { font-size: 11px; line-height: 1.72; }
+  .hero-actions { flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .hero-actions .button { min-height: 43px; padding-inline: 12px; font-size: 9px; }
+  .hero-fish { pointer-events: none; }
+  .fish-one { width: 52vw; height: 35vw; right: -8%; top: 10%; }
+  .fish-two { width: 37vw; height: 28vw; right: -3%; top: 23%; opacity: .36; }
+  .hero-bottom {
+    left: 6%; right: 6%; bottom: 17px;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    font-size: 7px;
+    letter-spacing: .1em;
+  }
+  .hero-bottom > span:first-child { font-size: 6px; letter-spacing: .08em; }
+  .hero-bottom > a { gap: 9px; }
+  .scroll-line { height: 25px; }
+  .fish-img, .fish-card:nth-child(2) .fish-img { height: 205px; }
+  .fish-card:nth-child(3) .fish-img { height: 205px; }
+  .gallery-grid { grid-template-rows: 195px 145px; }
+  .gallery-caption { flex-wrap: wrap; }
+}
+
+@media (max-width: 350px) {
+  .brand-copy b { font-size: 11px; }
+  .brand-copy small { letter-spacing: .17em; }
+  .hero h1 { font-size: 38px; }
+  .hero-copy { margin-bottom: 105px; }
+  .hero-actions .button { padding-inline: 10px; }
+  .fish-img, .fish-card:nth-child(2) .fish-img,
+  .fish-card:nth-child(3) .fish-img { height: 180px; }
+  .collection-bottom { align-items: flex-start; gap: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .button, .nav-whatsapp, .text-link, .fish-card, .fish-card img,
+  .gallery-grid > div, .gallery-grid img, .social-mosaic a,
+  .social-mosaic img, .footer-col a { transition: none !important; }
+}
