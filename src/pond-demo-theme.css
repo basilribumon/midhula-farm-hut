@@ -94,6 +94,7 @@ body {
   filter: drop-shadow(0 13px 24px rgba(0,0,0,.37));
   will-change: transform;
 }
+.hero-fish.fish-one, .hero-fish.fish-two { animation: none !important; }
 .hero-fish img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -107,8 +108,8 @@ body {
   top: 56%;
   right: 18%;
   opacity: .72;
-  transform: scaleX(-1);
 }
+.fish-two img { transform: scaleX(-1); }
 .hero-copy { z-index: 7; }
 .hero-copy::before { display: none !important; }
 .hero h1 em, .intro h2 em, .collection h2 em, .farm h2 em,
@@ -121,6 +122,60 @@ body {
 .hero .eyebrow > span { background: #a6cb76; }
 .hero-bottom, .eyebrow-light { color: rgba(237,239,215,.75); }
 .scroll-line i { background: #a3c96c; }
+
+/* Optional five light-orb pond challenge. The generous hit areas work by touch. */
+.pond-game {
+  position: absolute;
+  z-index: 8;
+  top: 116px;
+  right: 7%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(238,242,218,.83);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0,0,0,.42);
+  pointer-events: none;
+}
+.pond-game-score { color: #c9e38c; font: 500 31px/1 var(--serif); letter-spacing: 0; }
+.pond-game-score i { margin-left: 2px; color: rgba(236,240,218,.66); font: 500 15px var(--serif); }
+.pond-pearl {
+  position: absolute;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.pond-pearl span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 29%, #f5f4da 0 12%, #d9e9ad 27%, #a9c776 57%, rgba(123,163,91,.48) 76%, transparent 100%);
+  box-shadow: 0 0 12px 4px rgba(203,229,150,.44), 0 0 29px 11px rgba(148,197,107,.2);
+  transition: box-shadow .25s, filter .25s;
+}
+.pond-pearl:hover span, .pond-pearl:focus-visible span {
+  filter: brightness(1.24);
+  box-shadow: 0 0 18px 7px rgba(223,244,168,.6), 0 0 39px 15px rgba(148,197,107,.31);
+}
+.pond-pearl:focus-visible { outline: 1px solid rgba(226,241,180,.58); outline-offset: -7px; border-radius: 50%; }
+.pond-pearl.pearl-found { pointer-events: none; }
+.pearl-1 { top: 28%; right: 7%; }
+.pearl-2 { top: 21%; right: 35%; }
+.pearl-3 { top: 77%; right: 22%; }
+.pearl-4 { top: 77%; left: 12%; }
+.pearl-5 { top: 47%; right: 13%; }
 
 .button-coral {
   background: linear-gradient(115deg, #678f3c, #89ad50);
@@ -170,6 +225,14 @@ body {
   .fish-two { width: 36vw; height: 25vw; top: 38%; }
   .hero-copy { z-index: 7; }
   .hero::before { opacity: .38; }
+  .pond-game { top: 82px; right: 6%; font-size: 8px; gap: 8px; }
+  .pond-game-score { font-size: 26px; }
+  .pond-pearl { width: 46px; height: 46px; }
+  .pearl-1 { top: 22%; right: 3%; }
+  .pearl-2 { top: 31%; right: 36%; }
+  .pearl-3 { top: 43%; right: 5%; }
+  .pearl-4 { top: 47%; left: 4%; }
+  .pearl-5 { top: 55%; right: 28%; }
 }
 @media (max-width: 430px) {
   .pond-pad { width: 23vw; }
