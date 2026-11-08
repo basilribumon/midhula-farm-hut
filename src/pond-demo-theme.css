@@ -1,0 +1,182 @@
+/* Murky, overhead pond art direction with two clearly moving fish. */
+:root {
+  --ink: #f0f0dc;
+  --ocean: #142c27;
+  --deep: #091813;
+  --cream: #eeefd9;
+  --muted: #b6c2a7;
+  --brand-green: #84b946;
+  --brand-magenta: #d49ab1;
+}
+
+body {
+  background-color: #091813;
+  background-image:
+    radial-gradient(ellipse at 18% 19%, rgba(54,101,67,.52), transparent 49%),
+    radial-gradient(ellipse at 81% 62%, rgba(38,82,55,.42), transparent 48%),
+    linear-gradient(180deg, rgba(5,20,15,.88), rgba(9,28,20,.91)),
+    url('https://images.unsplash.com/photo-1530053969600-caed2596d242?auto=format&fit=crop&w=2200&q=85');
+}
+
+.hero {
+  background: #0b1c15;
+  isolation: isolate;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: -8%;
+  pointer-events: none;
+  opacity: .55;
+  background:
+    repeating-radial-gradient(ellipse at 22% 36%, transparent 0 26px, rgba(190,218,165,.14) 28px, transparent 31px 64px),
+    repeating-radial-gradient(ellipse at 76% 62%, transparent 0 34px, rgba(186,215,164,.11) 36px, transparent 39px 80px),
+    linear-gradient(145deg, rgba(12,43,27,.38), rgba(5,19,14,.2) 48%, rgba(20,50,31,.34));
+  background-size: 780px 680px, 920px 780px, 100% 100%;
+  animation: pondSurfaceDrift 28s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+.hero-photo {
+  z-index: 0;
+  opacity: .2;
+  background-image:
+    repeating-radial-gradient(ellipse at 48% 52%, transparent 0 43px, rgba(168,197,151,.11) 45px, transparent 48px 92px),
+    radial-gradient(ellipse at 49% 40%, #345b3e, #142c20 44%, #07140f 100%);
+  background-size: 100% 100%;
+  animation: pondPhotoBreathe 18s ease-in-out infinite alternate;
+}
+.hero-shade {
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(6,20,14,.53), rgba(6,20,14,.22) 56%, rgba(6,20,14,.35)),
+    linear-gradient(0deg, rgba(4,17,12,.66), transparent 35%, rgba(4,17,12,.2));
+}
+.hero-grain { z-index: 2; opacity: .2; }
+.light-column { z-index: 2; background: linear-gradient(transparent, rgba(188,222,156,.15), transparent); }
+
+.pond-pad {
+  position: absolute;
+  z-index: 3;
+  width: clamp(90px, 12vw, 170px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 34% 26%, rgba(181,217,121,.58), transparent 28%),
+    radial-gradient(ellipse at 55% 65%, #527e3c 0%, #315d32 62%, #23492b 100%);
+  box-shadow: inset -10px -11px 23px rgba(4,25,14,.34), inset 3px 4px 12px rgba(211,239,159,.2), 0 13px 27px rgba(0,0,0,.21);
+  opacity: .86;
+  clip-path: polygon(50% 50%, 49% 0, 58% 0, 67% 3%, 76% 8%, 84% 15%, 91% 24%, 96% 34%, 99% 45%, 100% 55%, 98% 66%, 94% 76%, 88% 85%, 79% 93%, 68% 98%, 56% 100%, 44% 99%, 33% 96%, 23% 90%, 15% 82%, 8% 72%, 3% 61%, 0 49%, 1% 37%, 5% 26%, 11% 16%, 20% 8%, 31% 3%, 40% 1%);
+  animation: padFloat 9s ease-in-out infinite;
+}
+.pad-one { left: 11%; top: 18%; }
+.pad-two { right: 12%; top: 17%; width: clamp(100px, 14vw, 195px); animation-delay: -3s; }
+.pad-three { right: 28%; bottom: 15%; width: clamp(78px, 10vw, 140px); opacity: .62; animation-delay: -5s; }
+.pond-flower {
+  position: absolute;
+  z-index: 4;
+  top: 20%;
+  left: 13.8%;
+  color: #f2e9dc;
+  font-size: clamp(33px, 4.4vw, 58px);
+  line-height: 1;
+  text-shadow: 0 3px 20px rgba(255,238,218,.4);
+  animation: flowerSway 7s ease-in-out infinite;
+}
+
+.hero-fish {
+  position: absolute;
+  z-index: 5;
+  width: min(31vw, 380px);
+  height: min(20vw, 215px);
+  right: 9%;
+  top: 23%;
+  pointer-events: none;
+  filter: drop-shadow(0 13px 24px rgba(0,0,0,.37));
+  will-change: transform;
+}
+.hero-fish img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  opacity: .92;
+  mask-image: radial-gradient(ellipse at center, #000 28%, rgba(0,0,0,.9) 49%, transparent 73%);
+}
+.fish-two {
+  width: min(23vw, 280px);
+  height: min(16vw, 170px);
+  top: 56%;
+  right: 18%;
+  opacity: .72;
+  transform: scaleX(-1);
+}
+.hero-copy { z-index: 7; }
+.hero-copy::before { display: none !important; }
+.hero h1 em, .intro h2 em, .collection h2 em, .farm h2 em,
+.values h2 em, .gallery h2 em, .social h2 em, .contact h2 em {
+  background: linear-gradient(105deg, #e9dfb4, #aacb79 54%, #d49ab1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero .eyebrow > span { background: #a6cb76; }
+.hero-bottom, .eyebrow-light { color: rgba(237,239,215,.75); }
+.scroll-line i { background: #a3c96c; }
+
+.button-coral {
+  background: linear-gradient(115deg, #678f3c, #89ad50);
+  border-color: rgba(220,237,178,.65);
+  color: #fffde8;
+}
+.button-coral:hover { background: linear-gradient(115deg, #7ca64b, #a3c568); }
+.button-ghost, .button-cream { border-color: rgba(217,227,188,.45); color: #f0f0dc; }
+.button-ghost:hover, .button-cream:hover { background: rgba(111,151,72,.45); color: white; }
+.nav-whatsapp, .nav-scrolled .nav-whatsapp { border-color: rgba(172,208,116,.56); background: rgba(74,111,49,.26); }
+.nav-whatsapp:hover, .nav-scrolled .nav-whatsapp:hover { background: #587d39; }
+
+/* One subdued pond tone continues behind content, with no framed section blocks. */
+.intro, .collection, .values, .gallery, .footer { background: transparent !important; }
+.farm, .social, .contact { background: transparent !important; }
+.farm::before, .social::before, .contact::before { background: linear-gradient(90deg, rgba(8,27,18,.2), rgba(8,28,19,.43), rgba(8,27,18,.18)); }
+.fish-card, .fish-card:hover, .value-item, .value-item:nth-child(even), .value-item:nth-child(odd), .value-item:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.fish-card:hover { transform: translateY(-4px); }
+.fish-img, .fish-card:nth-child(2) .fish-img, .gallery-grid > div, .social-mosaic a { border-radius: 2px; }
+.fish-card-meta h3, .value-item h3, .intro h2, .collection h2,
+.values h2, .gallery h2, .farm h2, .social h2, .contact h2 { color: #eeeedd; }
+.lead, .intro-body p, .collection-note, .values-head > p, .value-item p,
+.gallery-caption, .section-no, .footer-brand p, .footer-bottom { color: #b5c1a7; }
+.value-item, .value-item:nth-child(even), .value-item:nth-child(odd), .value-item:hover { border-bottom-color: rgba(208,224,180,.13); }
+.contact-side, .footer-map { background: transparent; border-color: rgba(208,224,180,.16); box-shadow: none; }
+.text-link, .social-handle, .gallery-caption a { color: #bdd688; }
+.eyebrow > span { background: #a2c76e; }
+.round-stamp { color: #edf0d9; background: rgba(28,53,31,.72); border-color: rgba(210,227,167,.42); }
+.round-stamp:before { border-color: rgba(210,227,167,.36); }
+
+@keyframes pondSurfaceDrift { from { transform: translate3d(-1.4%, -1%, 0) scale(1); } to { transform: translate3d(1.3%, 1%, 0) scale(1.045); } }
+@keyframes pondPhotoBreathe { from { transform: scale(1); } to { transform: scale(1.07); } }
+@keyframes padFloat { 0%,100% { translate: 0 0; rotate: -3deg; } 50% { translate: 0 -10px; rotate: 1deg; } }
+@keyframes flowerSway { 0%,100% { transform: rotate(-8deg) translateY(0); } 50% { transform: rotate(7deg) translateY(-4px); } }
+
+@media (max-width: 760px) {
+  .pond-pad { width: 20vw; }
+  .pad-one { left: 4%; top: 12%; }
+  .pad-two { right: 3%; top: 14%; }
+  .pad-three { right: 14%; bottom: 25%; }
+  .pond-flower { left: 8%; top: 14%; font-size: 37px; }
+  .hero-fish { width: 48vw; height: 31vw; top: 20%; }
+  .fish-two { width: 36vw; height: 25vw; top: 38%; }
+  .hero-copy { z-index: 7; }
+  .hero::before { opacity: .38; }
+}
+@media (max-width: 430px) {
+  .pond-pad { width: 23vw; }
+  .pad-three { bottom: 27%; }
+  .hero-fish { width: 54vw; height: 36vw; top: 18%; }
+  .fish-two { width: 39vw; height: 27vw; top: 35%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .hero-photo, .pond-pad, .pond-flower { animation: none; }
+}
