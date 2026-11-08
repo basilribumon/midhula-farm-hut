@@ -1,0 +1,119 @@
+/* Editorial, borderless treatments that let the shared water scene breathe. */
+:root { --serif: 'Cormorant Garamond', Georgia, serif; }
+
+.hero-copy::before { display: none !important; }
+.hero-copy { width: min(800px, 67%); padding: 22px 28px 26px 0; }
+.hero h1 { font-weight: 500; letter-spacing: -.055em; }
+.intro h2, .collection h2, .values h2, .gallery h2, .farm h2,
+.social-left h2, .contact h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+.lead, .fish-card-meta h3, .contact-side strong { font-family: var(--serif); }
+
+.farm, .social, .contact {
+  border: 0 !important;
+  background: transparent !important;
+}
+.farm { isolation: isolate; }
+.farm::before, .social::before, .contact::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(4,22,30,.18), rgba(5,26,35,.52) 48%, rgba(4,21,30,.2));
+}
+.social::before { background: linear-gradient(90deg, rgba(4,22,30,.28), rgba(5,26,35,.48)); }
+.contact::before { background: radial-gradient(ellipse at 72% 48%, rgba(76,165,151,.15), transparent 48%); }
+
+/* Replace boxed product cards with photographs and typography on the water. */
+.fish-card, .fish-card:hover {
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  transform: none;
+}
+.fish-card:hover { box-shadow: none; }
+.fish-img, .fish-card:nth-child(2) .fish-img {
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 22px 52px rgba(0,0,0,.22);
+  clip-path: inset(0 round 2px);
+  transition: clip-path .45s ease, box-shadow .45s ease;
+}
+.fish-card:hover .fish-img { clip-path: inset(8px round 2px); box-shadow: 0 28px 60px rgba(0,0,0,.3); }
+.fish-card img { transition: transform .9s cubic-bezier(.2,.75,.25,1), filter .6s; }
+.fish-card:hover img { transform: scale(1.07); }
+.fish-card-meta { padding: 18px 0 0; }
+.card-arrow { border: 0; border-radius: 50%; background: rgba(5,25,33,.48); }
+
+/* Values become open editorial rows; no card outlines or fills. */
+.values-grid { gap: 0 48px; border-top: 0; }
+.value-item, .value-item:nth-child(even), .value-item:nth-child(odd), .value-item:hover {
+  min-height: 116px;
+  margin: 0;
+  padding: 25px 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(177,222,212,.17);
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.value-item:hover { transform: translateX(5px); border-color: rgba(119,221,167,.45); }
+.value-item:nth-child(even) { padding-left: 0; }
+.value-item h3 { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+
+.gallery-grid > div, .gallery-grid > div:hover {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.gallery-grid img { border-radius: 0; transition: transform 1s cubic-bezier(.2,.75,.25,1), filter .7s; }
+.gallery-grid > div:hover img { transform: scale(1.055); filter: saturate(1.12); }
+.gallery-grid span { border: 0; border-radius: 0; background: linear-gradient(90deg, rgba(3,20,27,.63), transparent); }
+.social-mosaic a, .social-mosaic a:hover { border: 0; border-radius: 0; box-shadow: none; }
+.social-mosaic img { border-radius: 0; transition: transform .9s cubic-bezier(.2,.75,.25,1), filter .6s; }
+.social-mosaic a:hover img { transform: scale(1.055); filter: saturate(1.12); }
+.contact-side {
+  padding: 16px 0 16px 28px;
+  border: 0;
+  border-left: 1px solid rgba(177,222,212,.24);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.footer-map { padding: 13px 0; border: 0; border-radius: 0; border-top: 1px solid rgba(177,222,212,.18); background: transparent; box-shadow: none; }
+.footer-bottom { border-color: rgba(177,222,212,.17); }
+
+/* A light, varied rise as each content group enters the viewport. */
+.intro-visual img, .farm-image img {
+  transition: transform 1.1s cubic-bezier(.2,.75,.25,1), filter .7s;
+}
+.intro-visual:hover img, .farm-image:hover img { transform: scale(1.025); }
+.round-stamp { animation: stampDrift 8s ease-in-out infinite; }
+.contact-orbit { animation: orbitBreathe 11s ease-in-out infinite alternate; }
+.orbit-two { animation-delay: -4s; }
+@keyframes stampDrift { 0%,100% { transform: rotate(-7deg) translateY(0); } 50% { transform: rotate(1deg) translateY(-7px); } }
+@keyframes orbitBreathe { from { transform: scale(.96) rotate(-4deg); opacity: .56; } to { transform: scale(1.04) rotate(3deg); opacity: 1; } }
+
+@media (max-width: 760px) {
+  .hero-copy { width: 88%; padding: 0; }
+  .fish-card, .fish-card:hover { padding: 0; }
+  .fish-card:hover .fish-img { clip-path: inset(0 round 2px); }
+  .values-grid { gap: 0; }
+  .value-item, .value-item:nth-child(even), .value-item:nth-child(odd), .value-item:hover { min-height: 0; padding: 20px 0; }
+  .contact-side { border-left: 0; border-top: 1px solid rgba(177,222,212,.24); padding: 22px 0 0; }
+  .farm::before, .social::before { background: rgba(4,22,30,.36); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .round-stamp, .contact-orbit, .orbit-two { animation: none; }
+  .intro-visual img, .farm-image img, .fish-card img, .gallery-grid img, .social-mosaic img { transition: none; }
+}
